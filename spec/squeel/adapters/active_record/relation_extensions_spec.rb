@@ -19,6 +19,11 @@ module Squeel
             queries.first.should match /"people"."id" = 0/
           end
 
+
+          it 'should not raise error when given a symbol' do
+            lambda { Person.find_by_name(:not_a_column)}.should_not raise_exception
+          end
+
         end
 
         describe '#build_arel' do
